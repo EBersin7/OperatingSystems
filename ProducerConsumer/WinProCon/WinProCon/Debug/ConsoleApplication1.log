@@ -1,0 +1,4 @@
+﻿  ConsoleApplication1.cpp
+c:\users\edber_000\documents\visual studio 2015\projects\winprocon\winprocon\consoleapplication1.cpp(91): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\edber_000\documents\visual studio 2015\projects\winprocon\winprocon\consoleapplication1.cpp(144): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ConsoleApplication1.vcxproj -> C:\Users\EdBer_000\Documents\Visual Studio 2015\Projects\WinProCon\WinProCon\Debug\ConsoleApplication1.exe

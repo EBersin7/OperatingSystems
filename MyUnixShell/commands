@@ -1,0 +1,6 @@
+help
+cd ..
+dir
+cd Project2
+ls
+_environ

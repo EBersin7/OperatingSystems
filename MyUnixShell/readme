@@ -1,0 +1,100 @@
+EDWARD BERSIN'S SHELL USER MANUAL
+1.Creation
+-A makefile, readme, and source code have been included in the project folder.
+ Simply enter the command 'make' at the command line to create the shell executable.
+2.Basics
+-The command 'myshell' will begin the execution of the program. This starting point
+ allows for a batchfile to be given as an argument. The batchfile will be interpreted
+ and read as though it contains command line arguments. Each line of the file will be
+ individually executed in the same way as a regular command line prompt does. Once the
+ end of the file has been reached, the shell will exit. The shell does not require any
+ arguments. If you wish to simply use the shell and personally enter commands, run only
+ the 'myshell' executable with no arguments.
+-A welcome message will appear when the shell is first run. Beneath it will appear the
+ command line prompt which waits for user input if there were no arguments.
+-The command line prompt will first appear as the full path to the directory where the
+ shell was executed from. The terminal will wait until a valid command is typed and the
+ enter key is pressed. After enter is pressed, the shell attempts to decipher and execute
+ the given command. If no command is given, the prompt is reprinted. The shell supports
+ UNIX commands and several built-in functions. Read further to see the list of internal
+ commands. The internal commands are executed from within the shell itself. All other
+ commands supported are executed as child processes from one of the various launches.
+3.Internal Commands
+-cd: This command changes the current directory to the directory given to it as an
+ argument. If no argument is given, it will print out the current directory. If the
+ argument given to it is not a directory an error message will print out. After
+ successful changing, the command line prompt will change to reflect the move.
+-clr: This command clears the terminal screen of all text. It makes it so that the
+ only a single command line prompt is at the top of the display. This command takes
+ no arguments.
+-dir: This command prints out the contents of the directory given to it as an argument.
+ If no argument is given, it prints out the contents of the current directory. If the
+ argument given is not a directory an error message is printed. As with cd, this command
+ can only move one level of directory at a time.
+-_environ: This command will print out all of the environment variables of the shell.
+ No arguments are required for this command. The underscore is put in front to 
+ distinguish it from the default env command.
+-echo: This command can take multiple arguments given to it and print them out as 
+ string comments on the display. If no arguments are given, a new line is printed
+ only.
+-help: This is the command used to open and read the readme file. The prompt will
+ ask for a press of the enter key to continue reading the file or it will ask for
+ a 'q' and the enter key to be pressed to return to the shell.
+-_pause: This command will pause the operation of the shell until the enter key has
+ been pressed. A message will print out signaling success. All other key presses will
+ be ignored until enter is read.
+-quit: This command will exit the shell. It breaks the loop by returning a 0 to the
+ status condition.
+4.Program Invocation
+-All other commands with their arguments are interpreted as program invocation performed
+ as fork and exec system calls. For information on supported full supported commands,
+ please see the official UNIX manual. Most, if not all, commands should work, but they
+ have not been extensively tested.
+5.Batchfile
+-As previously described, the shell executable can be run with an argument. In this
+ case however, no user input will be accepted. The file will be interpreted as a series
+ of command lines to be individually executed. When the end of the file is reached
+ the shell will exit.
+6.Special Symbols
+-All of the commands valid for the shell will support redirection, background execution,
+ and piping. Unfortunately, the redirection and piping are very limited. They can
+ correctly accept only 1 argument to the left and 1 argument to the right. The special
+ symbols must be separated from other commands with a space. If a command with arguments
+ is attempted to run with redirects or pipes to another command with arguments, the result
+ may be an error or it may run slightly off. It is recommended not to use more than just
+ one argument on each side.
+-Redirection:
+ -">": This command is used for output redirection. The shell will take the program
+  given to the left of this symbol and send the output of it to the file
+  given to the right of this symbol. If the file to the right already exists, it will
+  be truncated and overwritten. If it does not exist, it will be created.
+ -">>": This command is used in the same way as the above, except that if the file given
+  to the right already exists it will be appended to rather than overwritten.
+ -"<": This command is used for input redirection. The shell will take the command or
+  file given to the right of this symbol and use it as input for the command given to
+  the left of this symbol. It is in the same vein as running the shell executable 
+  with a batchfile.
+-Background Execution:
+ -"&": This special symbol when used, will start the process that was given as a command
+  and then control will immediately return to the shell prompt. The symbol must be
+  put at the very end of the command line and separated by a space. Without this symbol,
+  program execution waits until it is finished before returning control. This allows
+  for processes to continue running and do their jobs without having to wait on them
+  to finish.
+-Pipes:
+ -"|": This special symbol will redirect the output of the program given to the left
+  of it and send it to the input of the program to the right of it. This is very
+  similar to the redirection symbols, except that this deals with programs not files.
+  If files are attempted to be used, an error may print or the results may be unexpected.
+  This command is very limited, the left program and the right program may be the only
+  arguments given with the pipe symbol. The pipe symbol must also be separated on both
+  sides by a space.
+7.Final
+-Thank you for reading the user manual. I hope that it was able to answer any questions
+ you may have had for supported function and use of myshell. For more information,
+ feel free to contact me, Edward Bersin, at tuf18309@temple.edu.
+****************************************************************
+****************************************************************
+****************************************************************
+****************************************************************
+****************************************************************
